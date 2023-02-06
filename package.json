@@ -1,0 +1,32 @@
+{
+  "name": "expresslab",
+  "version": "1.0.0",
+  "description": "Express lab",
+  "main": "app.js",
+  "scripts": {
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "#(.*)": "<rootDir>/node_modules/$1"
+    }
+  },
+  "keywords": [
+    "Express",
+    "intro",
+    "lab"
+  ],
+  "devDependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "babel-jest": "^29.3.1",
+    "jest": "^29.3.1",
+    "supertest": "^6.3.1"
+  },
+  "author": "Sergio Marentes",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0"
+  }
+}
