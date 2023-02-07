@@ -50,7 +50,7 @@ app.post("/auth", (req,res)=>{
   }
 })
 app.get("/premium-clients",JWTValidation,(req,res)=>{
-if(req.header("rol") == "admin"){
+if(req.header("rol") === "admin"){
   res.send("premium-clients list");
 }else{
   res.status("403").json({ error: "Access not allowed" });
@@ -58,7 +58,7 @@ if(req.header("rol") == "admin"){
 })
 
 app.get("/medium-clients",JWTValidation,(req,res)=>{
-if(req.headers("rol") == "admin"|| req.header("rol") === "user"){
+if(req.headers("rol") === "admin"|| req.header("rol") === "user"){
   res.send("medium-clients list");
 }else{
   res.status("403").json({ error: "Access not allowed" });
