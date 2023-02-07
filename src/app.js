@@ -10,7 +10,7 @@ const users = [
 function JWTValidation(req, res , next){
 const token = req.header("Authorization");
 try {
-  const verify = twt.verify(token, process.env.SECRET_KEY);
+  const verify = jwt.verify(token, process.env.SECRET_KEY);
   if(verify.rol === "admin"){
     req.headers = { ...req.headers, rol: "admin" };
   }
@@ -50,15 +50,15 @@ app.post("/auth", (req,res)=>{
   }
 })
 app.get("/premium-clients",JWTValidation,(req,res)=>{
-if(req.rol === "admin"){
+if(req.header("rol") == "admin"){
   res.send("premium-clients list");
 }else{
-  return res.status("403").json({ error: "Access not allowed" });
+  res.status("403").json({ error: "Access not allowed" });
 }
 })
 
 app.get("/medium-clients",JWTValidation,(req,res)=>{
-if(req.rol === "admin"|| req.rol === "user"){
+if(req.headers("rol") == "admin"|| req.header("rol") === "user"){
   res.send("medium-clients list");
 }else{
   res.status("403").json({ error: "Access not allowed" });
