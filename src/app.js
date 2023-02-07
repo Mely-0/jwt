@@ -58,7 +58,7 @@ if(req.header("rol") === "admin"){
 })
 
 app.get("/medium-clients",JWTValidation,(req,res)=>{
-if(req.headers("rol") === "admin"|| req.header("rol") === "user"){
+if(req.header("rol") === "admin"|| req.header("rol") === "user"){
   res.send("medium-clients list");
 }else{
   res.status("403").json({ error: "Access not allowed" });
